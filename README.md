@@ -15,6 +15,7 @@ Electrical schematics contain symbols, labels, and connecting wires that can be 
 - **Connection analysis:** Uses NetworkX to represent and analyze relationships between detected elements.
 - **Visual output:** Produces annotated schematic images and a text report of inferred connections.
 - **Interactive demo:** Provides a Gradio interface for uploading a schematic and viewing the results.
+- **AI Summary** Provides an AI Generated summary of the electrical schematic using Ollama
 
 ## Pipeline
 
