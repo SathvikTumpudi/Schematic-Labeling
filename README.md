@@ -15,16 +15,8 @@ Electrical schematics contain symbols, labels, and connecting wires that can be 
 - **Connection analysis:** Uses NetworkX to represent and analyze relationships between detected elements.
 - **Visual output:** Produces annotated schematic images and a text report of inferred connections.
 - **Interactive demo:** Provides a Gradio interface for uploading a schematic and viewing the results.
+- **Interactive graph** Displays a graph of all of the parts as nodes
 - **AI Summary** Provides an AI Generated summary of the electrical schematic using Ollama
-
-## Pipeline
-
-1. Upload an electrical schematic image.
-2. Detect symbols using YOLO.
-3. Detect text regions using CRAFT and extract text using Tesseract.
-4. Detect wire segments using OpenCV.
-5. Analyze relationships between symbols, labels, and wires.
-6. Display the annotated schematic and export the connection report.
 
 ## Setup and Installation
 
@@ -102,7 +94,3 @@ Results depend on image quality, model performance, text legibility, and wire-de
 - Improve wire-to-symbol association and connection accuracy.
 - Evaluate performance on a broader range of schematic layouts.
 - Package the application for easier local deployment.
-
-## Demo
-
-Screenshots and a demonstration video will be added here.
