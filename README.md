@@ -25,18 +25,51 @@ Electrical schematics contain symbols, labels, and connecting wires that can be 
 5. Analyze relationships between symbols, labels, and wires.
 6. Display the annotated schematic and export the connection report.
 
-## Getting Started
+## Setup and Installation
 
-The current implementation is developed in Google Colab.
+This project is designed to run in Google Colab, which provides a convenient environment for running the computer vision pipeline.
 
-1. Open the notebook in this repository using Google Colab.
-2. Install the required dependencies.
-3. Make the required model weights, class definitions, and CRAFT resources available.
-4. Run the notebook's setup and model-loading cells.
-5. Launch the Gradio interface.
-6. Upload a schematic and review the annotated image and connection report.
+### 1. Open the notebook
 
-Exact dependency versions and model-resource setup instructions will be documented alongside the notebook.
+Open `Line Detection AI with Tesseract.ipynb` in [Google Colab](https://colab.research.google.com/).
+
+You can upload the notebook to Colab or open it from your GitHub repository.
+
+### 2. Install dependencies
+
+Install the Python dependencies listed in `requirements.txt`. Some packages, especially PyTorch, may need versions compatible with the available Colab runtime and GPU.
+
+The project also requires the Tesseract OCR executable, in addition to the `pytesseract` Python package.
+
+### 3. Set up Tesseract OCR
+
+In a Colab cell, run:
+
+```bash
+!apt-get update -qq
+!apt-get install -y tesseract-ocr
+```
+
+### 4. Set up CRAFT text detection
+
+The project uses CRAFT for text-region detection. Clone or otherwise provide the CRAFT repository and ensure its dependencies and pretrained model weights are available.
+
+Depending on the installed `huggingface_hub` version, the original CRAFT code may require a compatibility change. In `CRAFT/model.py`, replace the deprecated `cached_download` import and call with the supported `hf_hub_download` function, as appropriate for the installed version.
+
+### 5. Run the notebook
+
+Execute the notebook cells in order. The pipeline uses YOLO for symbol detection, CRAFT for text-region detection, Tesseract for OCR, OpenCV for wire detection, and NetworkX to construct inferred connections.
+
+### 6. Launch the interactive interface
+
+Run the Gradio interface cell near the end of the notebook. It provides an interface for uploading a schematic and viewing the annotated output and detected connection report.
+
+The public Gradio URL is temporary and remains available only while the Colab runtime and app are running.
+
+## Output Files
+
+- `annotated_output.png` — schematic annotated with detection results.
+- `output.txt` — text report of inferred connections.
 
 ## Outputs
 
@@ -72,7 +105,3 @@ Results depend on image quality, model performance, text legibility, and wire-de
 ## Demo
 
 Screenshots and a demonstration video will be added here.
-
-## Acknowledgments
-
-This project combines existing computer vision, object detection, and OCR tools into a pipeline for electrical schematic analysis. Please consult the respective projects' licenses and attribution requirements when distributing their code or model resources.
